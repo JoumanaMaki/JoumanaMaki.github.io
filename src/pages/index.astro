@@ -58,6 +58,52 @@ const research = [
       * {
         box-sizing: border-box;
       }
+	  /* Back to Top Button */
+		.back-to-top {
+		position: fixed;
+		bottom: 30px;
+		right: 30px;
+
+		width: 48px;
+		height: 48px;
+
+		background: #74374F;
+		color: white;
+
+		border-radius: 50%;
+
+		display: flex;
+		align-items: center;
+		justify-content: center;
+
+		font-size: 24px;
+		text-decoration: none;
+
+		box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+		z-index: 1000;
+
+		transition: transform 0.3s ease, background 0.3s ease;
+		}
+
+		.back-to-top:hover {
+		background: #592638;
+		transform: translateY(-4px);
+		}
+
+		@media (max-width: 650px) {
+		.back-to-top {
+			bottom: 20px;
+			right: 20px;
+			width: 42px;
+			height: 42px;
+		}
+		}
+
+		@media (prefers-reduced-motion: reduce) {
+		.back-to-top {
+			transition: none;
+		}
+		}
 
       html {
         scroll-behavior: smooth;
@@ -342,6 +388,8 @@ const research = [
         padding: 35px 0;
         font-size: 13px;
         color: var(--muted);
+		text-align: center;
+
       }
 
       /* =========================
@@ -453,7 +501,7 @@ const research = [
         <nav aria-label="Main navigation">
           <a href="#about">About</a>
           <a href="#research">Research</a>
-          <a href="./public/JoumanaMakki_Lebenslauf.pdf" target="_blank" rel="noopener noreferrer">CV</a>
+          <a href="/JoumanaMakki_Lebenslauf.pdf" target="_blank" rel="noopener noreferrer">CV</a>
           <a href="#contact">Contact</a>
         </nav>
       </header>
@@ -493,8 +541,8 @@ const research = [
 
               <a
                 class="text-link"
-                href="/cv.pdf"
-                download="Joumana_Makki_CV.pdf"
+                href="/JoumanaMakki_Lebenslauf.pdf"
+                download="JoumanaMakki_Lebenslauf"
               >
                 Download CV ↓
               </a>
@@ -604,14 +652,19 @@ const research = [
         </section>
 
       </main>
+		  <a href="#" class="back-to-top" aria-label="Back to top">
+  ↑
+</a>
+	
 
       <!-- =========================
            FOOTER
       ========================= -->
 
       <footer>
+
         © {new Date().getFullYear()} Joumana Makki
-        · Built with Astro
+
       </footer>
 
     </div>
