@@ -226,7 +226,7 @@ const education = [
       .hero {
         display: block;
         max-width: 920px;
-        padding: 115px 0 125px;
+        padding: 35px 0 30px;
       }
 
       .hero-content {
@@ -249,6 +249,7 @@ const education = [
         font-size: 18px;
         line-height: 1.85;
         max-width: 680px;
+		 margin-bottom: 5px;
       }
 
       /* =========================
@@ -260,7 +261,6 @@ const education = [
         align-items: center;
         flex-wrap: wrap;
         gap: 24px;
-        margin-top: 38px;
       }
 
       .button {
@@ -326,7 +326,7 @@ const education = [
       ========================= */
 
       section:not(.hero) {
-        padding: 75px 0;
+        padding: 40px 0;
       }
 
       /* =========================
@@ -365,6 +365,146 @@ const education = [
         font-size: 15px;
         line-height: 1.8;
       }
+
+	  /* =========================
+   EXPERIENCE & EDUCATION
+========================= */
+
+.journey-section {
+  max-width: 900px;
+}
+
+.journey-intro {
+  font-size: 17px;
+  margin-bottom: 35px;
+  max-width: 620px;
+}
+
+.timeline-tabs {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 45px;
+}
+
+.timeline-tab {
+  border: 1px solid var(--border);
+  padding: 11px 25px;
+  border-radius: 6px;
+  background: transparent;
+  color: var(--muted);
+  font-family: "DM Sans", sans-serif;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.timeline-tab:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.timeline-tab.active {
+  background: var(--accent);
+  color: white;
+  border-color: var(--accent);
+}
+
+.timeline-tab:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+.timeline-panel[hidden] {
+  display: none;
+}
+
+/* Vertical timeline */
+
+.timeline {
+  position: relative;
+  padding-left: 36px;
+  border-left: 2px solid #D8BFC7;
+  margin-left: 7px;
+}
+
+.timeline-item {
+  position: relative;
+  padding-bottom: 42px;
+}
+
+.timeline-item:last-child {
+  padding-bottom: 0;
+}
+
+.timeline-dot {
+  position: absolute;
+  left: -44px;
+  top: 7px;
+  width: 14px;
+  height: 14px;
+  background: var(--accent);
+  border: 3px solid var(--paper);
+  border-radius: 50%;
+  box-shadow: 0 0 0 2px var(--accent);
+}
+
+.timeline-content {
+  max-width: 720px;
+}
+
+.timeline-date {
+  display: block;
+  color: var(--accent);
+  font-size: 13px;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.timeline-content h3 {
+  font-family: "DM Sans", sans-serif;
+  font-size: 19px;
+  font-weight: 600;
+  margin: 0 0 5px;
+  letter-spacing: -0.02em;
+}
+
+.timeline-organization {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--muted);
+}
+
+.timeline-content p {
+  font-size: 15px;
+  line-height: 1.8;
+  margin-top: 12px;
+  max-width: 650px;
+}
+
+/* Mobile */
+@media (max-width: 650px) {
+  .timeline {
+    padding-left: 25px;
+  }
+
+  .timeline-dot {
+    left: -33px;
+  }
+
+  .timeline-content h3 {
+    font-size: 17px;
+  }
+
+  .timeline-tabs {
+    margin-bottom: 35px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .timeline-tab {
+    transition: none;
+  }
+}
 
       /* =========================
          ABOUT
@@ -474,7 +614,7 @@ const education = [
 
       @media (max-width: 850px) {
         .hero {
-          padding: 85px 0;
+            padding: 40px 0 40px;
         }
 
         .hero.with-photo {
@@ -587,6 +727,7 @@ const education = [
 
         <nav aria-label="Main navigation">
           <a href="#about">About</a>
+		  <a href="#journey">Experience</a>
           <a href="#research">Research</a>
           <a
             href="/JoumanaMakki_Lebenslauf.pdf"
@@ -720,6 +861,92 @@ const education = [
 
         </section>
 
+
+		<!-- =========================
+     EXPERIENCE & EDUCATION
+========================= -->
+
+<section id="journey" class="journey-section">
+
+  <div class="eyebrow">
+    03 / My Journey
+  </div>
+
+  <h2>Experience & Education</h2>
+
+  <p class="journey-intro">
+    A journey through research, teaching,
+    software development, and academic learning.
+  </p>
+
+  <!-- Timeline tabs -->
+  <div class="timeline-tabs" role="group" aria-label="Timeline category">
+    <button
+      type="button"
+      class="timeline-tab active"
+      data-tab="experience"
+      aria-pressed="true"
+    >
+      Experience
+    </button>
+
+    <button
+      type="button"
+      class="timeline-tab"
+      data-tab="education"
+      aria-pressed="false"
+    >
+      Education
+    </button>
+  </div>
+
+  <!-- Experience timeline -->
+  <div class="timeline-panel" id="experience-panel">
+    <div class="timeline">
+
+      {experience.map((item) => (
+        <article class="timeline-item">
+          <div class="timeline-dot"></div>
+
+          <div class="timeline-content">
+            <span class="timeline-date">{item.date}</span>
+            <h3>{item.title}</h3>
+            <div class="timeline-organization">
+              {item.organization}
+            </div>
+            <p>{item.description}</p>
+          </div>
+        </article>
+      ))}
+
+    </div>
+  </div>
+
+  <!-- Education timeline -->
+  <div class="timeline-panel" id="education-panel" hidden>
+    <div class="timeline">
+
+      {education.map((item) => (
+        <article class="timeline-item">
+          <div class="timeline-dot"></div>
+
+          <div class="timeline-content">
+            <span class="timeline-date">{item.date}</span>
+            <h3>{item.title}</h3>
+            <div class="timeline-organization">
+              {item.organization}
+            </div>
+            <p>{item.description}</p>
+          </div>
+        </article>
+      ))}
+
+    </div>
+  </div>
+
+</section>
+
+
         <!-- =========================
              CONTACT
         ========================= -->
@@ -792,6 +1019,31 @@ const education = [
 
       updateBackToTop();
     </script>
+
+	<script>
+  const tabs = document.querySelectorAll(".timeline-tab");
+
+  const experiencePanel =
+    document.getElementById("experience-panel");
+
+  const educationPanel =
+    document.getElementById("education-panel");
+
+  tabs.forEach((tab) => {
+    tab.addEventListener("click", () => {
+      const isExperience = tab.dataset.tab === "experience";
+
+      experiencePanel.hidden = !isExperience;
+      educationPanel.hidden = isExperience;
+
+      tabs.forEach((button) => {
+        const active = button === tab;
+        button.classList.toggle("active", active);
+        button.setAttribute("aria-pressed", String(active));
+      });
+    });
+  });
+</script>
 
   </body>
 </html>
